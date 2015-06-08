@@ -1,0 +1,20 @@
+{
+  "jspm": {
+    "ignore": [
+      "node_modules",
+      "jspm_packages"
+    ],
+    "directories": {
+      "lib": "src"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.7.6"
+  }
+}
