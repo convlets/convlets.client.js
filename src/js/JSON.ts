@@ -1,7 +1,7 @@
 class Serializer
 {
   //http://stackoverflow.com/questions/5480570/json-stringify-change-the-case-of-the-key
-    static serialize(entity: any) {
+    static serialize(entity: any) : any {
       JSON.stringify(entity, function (key, value) {
         if (value && typeof value === 'object') {
           var replacement = {};
@@ -25,7 +25,7 @@ class Serializer
                 delete value[k];
               }
             }
-            
+
             return value;
           });
     }

@@ -1,10 +1,11 @@
 ///<reference path="IConvletCommand.ts" />
+///<reference path="JSON.ts" />
 var client = {  
     events: [],
     send: function(command : IConvletCommand) {
         var envelope = 
             new MessageEnvelope(command.typeID, 
-                command.id, JSON.stringify(command));
-        alert(JSON.stringify(envelope));    	
+                command.id, Serializer.serialize(command));
+        alert(Serializer.serialize(envelope));    	
     }
 };
