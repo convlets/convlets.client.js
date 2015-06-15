@@ -1,6 +1,6 @@
 class MessageEnvelope
 {
-    constructor(private messageTypeID: string,
-        private messageID: string, private data: string) {
+    constructor(public messageTypeID: string,
+        public messageID: string, public data: string) {
     }    
 }
