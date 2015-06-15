@@ -2,6 +2,9 @@
 var client = {  
     events: [],
     send: function(command : IConvletCommand) {
-        alert("sending " + JSON.stringify(command));
+        var envelope = 
+            new MessageEnvelope(command.typeID, 
+                command.id, JSON.stringify(command));
+        alert(JSON.stringify(envelope));    	
     }
 };
