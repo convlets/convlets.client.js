@@ -2,6 +2,6 @@
 var client = {  
     events: [],
     send: function(command : IConvletCommand) {
-        alert("sending " + command.TypeID);
+        alert("sending " + JSON.stringify(command));
     }
 };
