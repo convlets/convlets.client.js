@@ -6,6 +6,6 @@ var client = {
         var envelope = 
             new MessageEnvelope(command.typeID, 
                 command.id, Serializer.serialize(command));
-        alert(Serializer.serialize(envelope));    	
+        alert(JSON.stringify(envelope));    	
     }
 };
