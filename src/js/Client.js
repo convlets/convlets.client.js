@@ -1,7 +1,7 @@
 ///<reference path="IConvletCommand.ts" />
 ///<reference path="JSON.ts" />
 ///<reference path="../ts/jquery.d.ts" />
-var url = "http://localhost:8080/api/commands";
+var serverUrl = "http://localhost";
 var client = {
     events: [],
     send: function (command) {
@@ -10,7 +10,7 @@ var client = {
         //Post to server.
         $.ajax({
             type: "POST",
-            url: url,
+            url: serverUrl + "/api/commands",
             contentType: 'application/json',
             dataType: 'json',
             async: false,
