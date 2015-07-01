@@ -1,0 +1,4 @@
+interface ITranslatable
+{
+	typeID: string;
+}

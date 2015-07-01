@@ -1,10 +1,11 @@
 ///<reference path="IConvletCommand.ts" />
 ///<reference path="JSON.ts" />
+///<reference path="MessageEnvelope.ts" />
 ///<reference path="../ts/jquery.d.ts" />
 var serverUrl = "http://localhost";
 var client = {
     events: [],
-    send: function (command) {
+    send: function (command, callback) {
         var envelope = new MessageEnvelope(command.typeID, command.id, Serializer.serialize(command));
         var data = Serializer.serialize(envelope);
         //Post to server.
@@ -13,16 +14,22 @@ var client = {
             url: serverUrl + "/api/commands",
             contentType: 'application/json',
             dataType: 'json',
-            async: false,
+            async: true,
             data: data,
-            success: function () {
-                alert("Thanks!");
+            success: function (response) {
+                callback(response);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
                 alert(xhr.responseText);
             }
         });
+        // .done(function(data) {
+        //   alert(data)
+        // })
+        // .fail(function() {
+        //   alert("Ajax failed to fetch data")
+        // });                  	
     }
 };
 // var message;
