@@ -1,44 +1,37 @@
+///<reference path="Guid.ts" />
 ///<reference path="IConvletFault.ts" />
+/// <reference path="Client.ts" />
 
-class FaultsRegistry {
-	private all : string[] = [];
-	
-	constructor() {
-		this.all.push("1A3BB01D-18C9-493E-B693-F6725CA9F1FE");
-		this.all.push("E54611E3-979D-4B57-93EC-E4B6D06B2C6B");
-		this.all.push("E55289A5-5FAE-4125-84BB-954E5AB05606");
-	}
-	
-	contains(typeID:string) : boolean {
-		return this.all.some(function(f) {
-			return f == typeID;
-		});
+class ConvletFault implements IConvletFault {
+	public id: string;
+	constructor(public typeID: string,
+		public processID: string) {
+		this.id = Guid.newGuid();
 	}
 }
 
-class InvalidData implements IConvletFault {
-	public typeID: string;
-	
-	constructor(public id: string,
+class InvalidData extends ConvletFault {
+	constructor(public processID: string, 
 		public reference: string) {
-		this.typeID = "1A3BB01D-18C9-493E-B693-F6725CA9F1FE";
+		super("1A3BB01D-18C9-493E-B693-F6725CA9F1FE", processID);
 	}
 }
+client.registerFault("1A3BB01D-18C9-493E-B693-F6725CA9F1FE");
 
-class RequiredDataMissing implements IConvletFault {
-	public typeID: string;
-	
-	constructor(public id: string,
+class RequiredDataMissing extends ConvletFault {
+	constructor(public processID: string,
 		public reference: string) {
-		this.typeID = "E54611E3-979D-4B57-93EC-E4B6D06B2C6B";
+		super("E54611E3-979D-4B57-93EC-E4B6D06B2C6B", processID);
 	}
 }
+client.registerFault("E54611E3-979D-4B57-93EC-E4B6D06B2C6B");
 
-class UnknownFault implements IConvletFault {
+class UnknownFault extends ConvletFault {
 	public typeID: string;
 	
-	constructor(public id: string,
+	constructor(public processID: string, 
 		public message: string) {
-		this.typeID = "E55289A5-5FAE-4125-84BB-954E5AB05606";
+		super("E55289A5-5FAE-4125-84BB-954E5AB05606", processID);
 	}
 }
+client.registerFault("E55289A5-5FAE-4125-84BB-954E5AB05606");

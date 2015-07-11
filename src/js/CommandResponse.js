@@ -1,16 +1,12 @@
-// class CommandResponse
-// {
-// 	public commandID: string = "";
-// 	public processID: string = "";
-// 	public successful: boolean = false;
-// 	public message: string = "";
-// }
+///<reference path="ITranslatable.ts" />
+///<reference path="IConvletFault.ts" />
 var CommandResponse = (function () {
-    function CommandResponse(commandID, processID, successful, message) {
+    function CommandResponse(commandID, typeID, processID, successful, faults) {
         this.commandID = commandID;
+        this.typeID = typeID;
         this.processID = processID;
         this.successful = successful;
-        this.message = message;
+        this.faults = faults;
     }
     return CommandResponse;
 })();

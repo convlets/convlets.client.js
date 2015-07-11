@@ -7,7 +7,6 @@ class CommandResponse implements ITranslatable
 		public typeID: string,
 		public processID: string,
 		public successful: boolean,
-		public message: string,
 		public faults : IConvletFault[]) {
 	}
 }

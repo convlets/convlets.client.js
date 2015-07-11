@@ -4,4 +4,5 @@ interface IConvletMessage
 	//Server will replace all client-generated GUIDs and respond with the updated command as part of a success response.
    	id : string;
    	typeID: string;
+	processID: string;
 }
